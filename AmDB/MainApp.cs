@@ -22,7 +22,7 @@ namespace AmDB
 			connection.Close();
 		}
 
-		//Вызов форм
+		//Р’С‹Р·РѕРІ С„РѕСЂРј
 		private void ContentsToolMenuItem_Click(object sender, EventArgs e)
 		{
 			Contents contents = new Contents();
@@ -44,7 +44,7 @@ namespace AmDB
 			modify.ShowDialog();
 		}
 		
-		//Листбокс
+		//Г‹ГЁГ±ГІГЎГ®ГЄГ±
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			connection.Open();
@@ -71,7 +71,7 @@ namespace AmDB
 		private void DeleteListboxToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			connection.Open();
-			DialogResult result = MessageBox.Show("Вы уверены?", "Сообщение", MessageBoxButtons.YesNo);
+			DialogResult result = MessageBox.Show("Г‚Г» ГіГўГҐГ°ГҐГ­Г»?", "Г‘Г®Г®ГЎГ№ГҐГ­ГЁГҐ", MessageBoxButtons.YesNo);
 			if (result == DialogResult.Yes)
 			{
 				string sqlExpression = $"DELETE FROM HeroesOfRussia WHERE Name='{listBox1.SelectedItem}'";
@@ -82,19 +82,19 @@ namespace AmDB
 			connection.Close();
 		}
 
-		//Модальное окно о приложении
+		//ГЊГ®Г¤Г Г«ГјГ­Г®ГҐ Г®ГЄГ­Г® Г® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГЁ
 		private void InfoToolMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show
 			(
-				"База данных 'Герои России'\nШишонин Иван Евгеньевич\nСпасибо маме и папе!",
-				"О программе",
+				"ГЃГ Г§Г  Г¤Г Г­Г­Г»Гµ 'ГѓГҐГ°Г®ГЁ ГђГ®Г±Г±ГЁГЁ'\nГГЁГёГ®Г­ГЁГ­ Г€ГўГ Г­ Г…ГўГЈГҐГ­ГјГҐГўГЁГ·\nГ‘ГЇГ Г±ГЁГЎГ® Г¬Г Г¬ГҐ ГЁ ГЇГ ГЇГҐ!",
+				"ГЋ ГЇГ°Г®ГЈГ°Г Г¬Г¬ГҐ",
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
 			);
 		}
 		
-		//Поисковая строка
+		//ГЏГ®ГЁГ±ГЄГ®ГўГ Гї Г±ГІГ°Г®ГЄГ 
 		private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			listBox1.Height = 444;
@@ -118,7 +118,7 @@ namespace AmDB
 			int index = SearchEngine(listBox1.SelectedIndex + 1, listBox1.Items.Count);
 			if (index == -1)
 			{
-				MessageBox.Show("Нет совпадений", "Поиск", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("ГЌГҐГІ Г±Г®ГўГЇГ Г¤ГҐГ­ГЁГ©", "ГЏГ®ГЁГ±ГЄ", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else
 			{
@@ -134,13 +134,13 @@ namespace AmDB
 			}
 		}
 
-		//Закрытие приложения
+		//Г‡Г ГЄГ°Г»ГІГЁГҐ ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї
 		private void Close(object sender, EventArgs e)
 		{
 			Close();
 		}		
 
-		//Чтение из базы данных
+		//Г—ГІГҐГ­ГЁГҐ ГЁГ§ ГЎГ Г§Г» Г¤Г Г­Г­Г»Гµ
 		public List<string> ReadStrings(string sqlExpression, int index)
 		{
 			List<string> result = new List<string> { };
@@ -164,7 +164,7 @@ namespace AmDB
 			return result;
 		}
 
-		//Поиск
+		//ГЏГ®ГЁГ±ГЄ
 		public int SearchEngine(int selectedItem, int items)
 		{
 			string? str;
