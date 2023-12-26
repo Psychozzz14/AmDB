@@ -44,7 +44,7 @@ namespace AmDB
 			modify.ShowDialog();
 		}
 		
-		//Ëèñòáîêñ
+		//Листбокс
 		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			connection.Open();
@@ -71,7 +71,7 @@ namespace AmDB
 		private void DeleteListboxToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			connection.Open();
-			DialogResult result = MessageBox.Show("Âû óâåðåíû?", "Ñîîáùåíèå", MessageBoxButtons.YesNo);
+			DialogResult result = MessageBox.Show("Вы уверены?", "Сообщение", MessageBoxButtons.YesNo);
 			if (result == DialogResult.Yes)
 			{
 				string sqlExpression = $"DELETE FROM HeroesOfRussia WHERE Name='{listBox1.SelectedItem}'";
@@ -82,19 +82,19 @@ namespace AmDB
 			connection.Close();
 		}
 
-		//Ìîäàëüíîå îêíî î ïðèëîæåíèè
+		//Модальное окно о приложении
 		private void InfoToolMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show
 			(
-				"Áàçà äàííûõ 'Ãåðîè Ðîññèè'\nØèøîíèí Èâàí Åâãåíüåâè÷\nÑïàñèáî ìàìå è ïàïå!",
-				"Î ïðîãðàììå",
+				"База данных 'Герои России'\nШишонин Иван Евгеньевич\nСпасибо маме и папе!",
+				"О программе",
 				MessageBoxButtons.OK,
 				MessageBoxIcon.Information
 			);
 		}
 		
-		//Ïîèñêîâàÿ ñòðîêà
+		//Поисковая строка
 		private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			listBox1.Height = 444;
@@ -118,7 +118,7 @@ namespace AmDB
 			int index = SearchEngine(listBox1.SelectedIndex + 1, listBox1.Items.Count);
 			if (index == -1)
 			{
-				MessageBox.Show("Íåò ñîâïàäåíèé", "Ïîèñê", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Нет совпадений", "Поиск", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 			else
 			{
@@ -134,13 +134,13 @@ namespace AmDB
 			}
 		}
 
-		//Çàêðûòèå ïðèëîæåíèÿ
+		//Закрытие приложения
 		private void Close(object sender, EventArgs e)
 		{
 			Close();
 		}		
 
-		//×òåíèå èç áàçû äàííûõ
+		//Чтение из базы данных
 		public List<string> ReadStrings(string sqlExpression, int index)
 		{
 			List<string> result = new List<string> { };
@@ -164,7 +164,7 @@ namespace AmDB
 			return result;
 		}
 
-		//Ïîèñê
+		//Поиск
 		public int SearchEngine(int selectedItem, int items)
 		{
 			string? str;
